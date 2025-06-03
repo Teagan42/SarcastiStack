@@ -1,0 +1,14 @@
+{
+  "tools": [
+    {
+      "name": "home_assistant_status",
+      "description": "Provides entity and area information from HA",
+      "memory_context": "User has smart home integration with Home Assistant. Entities include temperature sensors and automations."
+    },
+    {
+      "name": "memory_logger",
+      "description": "Logs what the user wants remembered",
+      "memory_context": "Log important user statements for later use."
+    }
+  ]
+}

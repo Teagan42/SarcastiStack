@@ -1,0 +1,5 @@
+{
+  "default": "{{memory_context}}\\n\\nUser: {{user_input}}",
+  "mistral": "### Context:\\n{{memory_context}}\\n\\n### User:\\n{{user_input}}",
+  "gpt": "You are an assistant. Use the following context:\\n{{memory_context}}\\n\\nUser: {{user_input}}"
+}
