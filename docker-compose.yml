@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  openrouter-clone:
+    build: ./router
+    ports:
+      - "8300:8000"
+    environment:
+      - OPENAI_API_KEY=your-openai-api-key
+    networks:
+      - llmnet
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    networks:
+      - llmnet
+
+volumes:
+  ollama_models:
+
+networks:
+  llmnet:
+    driver: bridge
