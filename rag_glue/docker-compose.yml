@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  rag-glue:
+    build: .
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
+    volumes:
+      - ../mcp_home_memory_cached:/app/ha_tools
+
+networks:
+  internal:
+    driver: bridge

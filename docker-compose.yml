@@ -1,27 +1,28 @@
 version: "3.9"
-
 services:
-  openrouter-clone:
-    build: ./router
+  mcp-memory:
+    build: ./user_memory
     ports:
-      - "8300:8000"
-    environment:
-      - OPENAI_API_KEY=your-openai-api-key
+      - "8200:8000"
     networks:
-      - llmnet
+      - internal
 
-  ollama:
-    image: ollama/ollama
+  mcp-tools:
+    build: ./mcp_home_memory_cached
     ports:
-      - "11434:11434"
+      - "8100:8000"
+    networks:
+      - internal
+
+  rag-glue:
+    build: ./rag_glue
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
     volumes:
-      - ollama_models:/root/.ollama
-    networks:
-      - llmnet
-
-volumes:
-  ollama_models:
+      - ./mcp_home_memory_cached:/app/ha_tools
 
 networks:
-  llmnet:
+  internal:
     driver: bridge

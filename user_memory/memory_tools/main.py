@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request
 
 app = FastAPI()
-
 memory_store = {}
 
 @app.post("/extract")
