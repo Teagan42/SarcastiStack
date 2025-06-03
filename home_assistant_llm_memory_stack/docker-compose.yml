@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  mcp-memory:
+    build: ./user_memory
+    ports:
+      - "8200:8000"
+    networks:
+      - internal
+
+  mcp-tools:
+    build: ./mcp_home_memory_cached
+    ports:
+      - "8100:8000"
+    networks:
+      - internal
+
+  rag-glue:
+    build: ./rag_glue
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
+    volumes:
+      - ./mcp_home_memory_cached:/app/ha_tools
+
+networks:
+  internal:
+    driver: bridge
